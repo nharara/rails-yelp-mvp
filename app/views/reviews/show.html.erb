@@ -1,0 +1,8 @@
+
+<div class="cards">
+  <h1>Review</h1>
+  <% @restaurants.each do |restaurant| %>
+    <h5 class="card-title"><%= review.content %></h5>
+    <p class="card-text"><%= review.rating %></p>
+  <% end %>
+</div>

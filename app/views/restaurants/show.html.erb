@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card mt-3 justify-content-center shadow p-3" style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= @restaurant['name'] %></h5>
+      <p class="card-text"><%= @restaurant['category'] %></p>
+      <p class="card-text"><%= @restaurant['address'] %></p>
+      <p class="card-text"><%= @restaurant['phone_number'] %></p>
+      <p><strong>Reviews</strong></p>
+      <ul class="list-group">
+        <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item"><%= "#{review.content}  Rating: #{review.rating} * " %></li>
+        <% end %>
+      </ul>
+      <br>
+      <p>
+        <%= link_to "⬅ Back to Restaurants", restaurants_path %>
+        <%= link_to "✐ Write A Review", new_restaurant_review_path(@restaurant) %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="card mt-3 justify-content-center shadow p-3" style="width: 25rem;">
+    <div class="card-body">
+      <h2 class="card-title">New Review</h5>
+      <p class="card-text"><%= simple_form_for [@restaurant, @review] do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating %>
+          <%= f.submit "Submit review", class: "btn btn-primary" %>
+        <% end %></p>
+    </div>
+  </div>
+</div>
